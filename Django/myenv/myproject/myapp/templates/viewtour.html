@@ -1,0 +1,31 @@
+{%extends 'aheader.html' %}
+{% load static %}
+{% block content %}
+
+{% for i in tour %}
+<br>
+<br>
+<br>
+<br>
+
+<div class="tour-grid">
+    <div class="tour-card">
+        <img src="{{ i.timage.url }}" alt="{{ i.tname }}" height="200px">
+        <div class="tour-card-body">
+            <h3 class="tour-name"> {{ i.tname }} </h3>
+            <div class="tour-meta">
+                <span class="badge badge-cat">{{ i.tcategory }}</span>
+                <span class="badge badge-days">{{ i.tdays }} Days</span>
+            </div>
+            <p class="tour-location">📍 {{ i.tlocation }}</p>
+            <p class="tour-desc">{{ i.desc }}</p>
+            <div class="tour-footer">
+                <div class="tour-price">₹{{ i.tprice }} <span>/person</span></div>
+                <a href="{% url 'edit' pk=i.pk %}" class="btn-edit">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}                    
